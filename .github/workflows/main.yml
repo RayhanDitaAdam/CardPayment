@@ -3,7 +3,7 @@ name: Build Windows .exe
 on:
   push:
     branches:
-      - main  # atau branch lain yang mau dijadikan trigger
+      - main  # ganti sesuai branch trigger-mu
 
 jobs:
   build:
@@ -20,12 +20,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        # kalau pake pnpm, ganti run jadi:
+        # run: pnpm install
 
       - name: Build Windows exe
         run: npx electron-packager . "CardPaymentMethod" --platform=win32 --arch=ia32 --overwrite --out=release-builds --icon=assets/icons/win/icon.ico
 
       - name: Upload exe as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: CardPaymentMethod-exe
           path: release-builds/**/*
