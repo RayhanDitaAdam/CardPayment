@@ -1,5 +1,5 @@
 // Electron
-const { app, Menu } = require("electron");
+const { app } = require("electron");
 
 app.whenReady().then(() => {
   // Main window
@@ -11,7 +11,7 @@ app.whenReady().then(() => {
   //mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   // Option 2: Load directly an URL if you don't need interface customization
-  //mainWindow.loadURL("https://github.com");
+  //mainWindow.loadURL("https://card-legality-frontend.vercel.app");
 
   // Option 3: Uses BrowserView to load an URL
   //const view = require("./src/view");
@@ -21,10 +21,6 @@ app.whenReady().then(() => {
   //mainWindow.openDevTools();
 
   // Menu (for standard keyboard shortcuts)
-  const menu = require("./src/menu");
-  const template = menu.createTemplate(app.name);
-  const builtMenu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(builtMenu);
 
   // Print function (if enabled)
   require("./src/print");

@@ -1,42 +1,140 @@
 <html>
   <head>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/topbar.css" />
-
-    <!-- <link rel="stylesheet" href="assets/css/no-topbar.css"> -->
+    <!-- <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/topbar.css" /> -->
+    <link rel="stylesheet" href="assets/css/no-topbar.css" />
     <script defer src="assets/js/renderer.js"></script>
     <meta charset="UTF-8" />
-    <title>Github</title>
+    <title>CardPayment</title>
     <meta
       http-equiv="Content-Security-Policy"
       content="script-src 'self' 'unsafe-inline';"
     />
+    <style>
+      /* Floating refresh button */
+      .refresh-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        color: white;
+        font-size: 20px;
+      }
+
+      .refresh-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+      }
+
+      .refresh-btn:active {
+        transform: translateY(-1px) scale(0.98);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+      }
+
+      .refresh-btn svg {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.3s ease;
+      }
+
+      .refresh-btn:hover svg {
+        transform: rotate(90deg);
+      }
+
+      /* Animation when clicked */
+      .refresh-btn.spinning svg {
+        animation: spin 1s ease-in-out;
+      }
+
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      /* Remove ALL topbar elements */
+      #controls,
+      .topbar,
+      .menu-bar,
+      .titlebar {
+        display: none !important;
+      }
+
+      /* Make webview full height */
+      webview {
+        height: 100vh !important;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
   <body>
-    <!-- Topbar -->
-    <div id="controls">
-      <button id="home" title="Go Home">Home</button>
-      <button id="print_button">Print</button>
-    </div>
-    <!-- End topbar -->
-
     <!-- Webview -->
-
     <webview
       autosize="on"
-      src="https://www.github.com"
+      src="https://card-legality-frontend.vercel.app/"
       id="webview"
-      data-home="https://github.com"
+      data-home="https://card-legality-frontend.vercel.app"
     ></webview>
 
-    <!-- HTML -->
-    <!--
-    <h1>Hello world!</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, voluptatum
-      sint ullam minima molestias nam id autem perferendis! Cumque veritatis
-      sunt dolor quidem cum? Natus dolore ipsum illum numquam molestiae?
-    </p>
-    -->
+    <!-- Floating Refresh Button -->
+    <button class="refresh-btn" id="refresh-btn" title="Refresh Page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+        <path d="M21 3v5h-5"></path>
+        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+        <path d="M3 21v-5h5"></path>
+      </svg>
+    </button>
+
+    <script>
+      // Refresh button functionality
+      const refreshBtn = document.getElementById('refresh-btn');
+      const webview = document.getElementById('webview');
+
+      refreshBtn.addEventListener('click', () => {
+        // Add spinning animation
+        refreshBtn.classList.add('spinning');
+        
+        // Refresh the webview
+        if (webview && webview.reload) {
+          webview.reload();
+        } else {
+          // Fallback for regular iframe or webview
+          const currentSrc = webview.src;
+          webview.src = '';
+          setTimeout(() => {
+            webview.src = currentSrc;
+          }, 100);
+        }
+
+        // Remove spinning animation after 1 second
+        setTimeout(() => {
+          refreshBtn.classList.remove('spinning');
+        }, 1000);
+      });
+
+      // Optional: Add keyboard shortcut for refresh (Ctrl+R or F5)
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey && e.key === 'r') || e.key === 'F5') {
+          e.preventDefault();
+          refreshBtn.click();
+        }
+      });
+    </script>
   </body>
 </html>

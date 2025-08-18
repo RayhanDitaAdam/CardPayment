@@ -1,21 +1,27 @@
 const path = require("path");
-const { BrowserWindow } = require("electron"); // https://www.electronjs.org/docs/api/browser-window
+const { BrowserWindow } = require("electron");
 
 exports.createBrowserWindow = () => {
-  // https://www.electronjs.org/docs/api/browser-window#class-browserwindow
   return new BrowserWindow({
     width: 1024,
     height: 768,
     icon: path.join(__dirname, "assets/icons/png/64x64.png"),
-    //titleBarStyle: 'hidden',
-    //frame: false,
+    // TAMBAHKAN INI UNTUK HAPUS MENU BAR
+    autoHideMenuBar: true,  // Auto hide menu bar (bisa dimunculkan dengan Alt)
+    // ATAU gunakan ini untuk benar-benar hapus menu bar:
+    // menuBarVisible: false,  // Completely hide menu bar
+    
+    // Uncomment salah satu dari ini jika mau hapus title bar juga:
+    // titleBarStyle: 'hidden',  // Hide title bar (macOS style)
+    // frame: false,             // Remove entire window frame
+    
     backgroundColor: "#fff",
     webPreferences: {
       nativeWindowOpen: true,
-      devTools: true, // false if you want to remove dev tools access for the user
+      devTools: true,
       contextIsolation: true,
-      webviewTag: true, // https://www.electronjs.org/docs/api/webview-tag,
-      preload: path.join(__dirname, "../preload.js"), // required for print function
+      webviewTag: true,
+      preload: path.join(__dirname, "../preload.js"),
     },
   });
 };

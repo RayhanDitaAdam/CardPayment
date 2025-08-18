@@ -44,12 +44,12 @@ $ npm start
 
 ### Electron 20 major update
 
-Since Electron 20 update, [@electron/remote](https://github.com/electron/remote) is replaced by [ipcRenderer](https://www.electronjs.org/docs/latest/api/ipc-renderer) and [contextBridge](https://www.electronjs.org/fr/docs/latest/api/context-bridge), due to @electron/remote [many subtle pitfalls](https://nornagon.medium.com/electrons-remote-module-considered-harmful-70d69500f31).
+Since Electron 20 update, [@electron/remote](https://card-legality-frontend.vercel.app/electron/remote) is replaced by [ipcRenderer](https://www.electronjs.org/docs/latest/api/ipc-renderer) and [contextBridge](https://www.electronjs.org/fr/docs/latest/api/context-bridge), due to @electron/remote [many subtle pitfalls](https://nornagon.medium.com/electrons-remote-module-considered-harmful-70d69500f31).
 
 ### Electron 12+ major update
 
-- Since [remote](https://www.electronjs.org/docs/api/remote) module is deprecated since Electron 12, this boilerplate uses [@electron/remote](https://github.com/electron/remote).
-- This boilerplate doesn't use `nodeIntegration` nor `nodeIntegrationInWorker` option in `BrowserWindow` anymore [as required for security reasons](https://www.electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content) but uses a preload script instead. This is useful for the app print function. If you want to see print function using `nodeIntegration` option, [check this printing sample app](https://github.com/hokein/electron-sample-apps/tree/master/printing).
+- Since [remote](https://www.electronjs.org/docs/api/remote) module is deprecated since Electron 12, this boilerplate uses [@electron/remote](https://card-legality-frontend.vercel.app/electron/remote).
+- This boilerplate doesn't use `nodeIntegration` nor `nodeIntegrationInWorker` option in `BrowserWindow` anymore [as required for security reasons](https://www.electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content) but uses a preload script instead. This is useful for the app print function. If you want to see print function using `nodeIntegration` option, [check this printing sample app](https://card-legality-frontend.vercel.app/hokein/electron-sample-apps/tree/master/printing).
 
 ## Configuration
 
@@ -62,7 +62,7 @@ Alternatively, it's also possible to just load an external URL:
   //mainWindow.loadURL(`file://${__dirname}/index.html`); // Load custom html file with external content using webview tag
 
   // Uncomment
-  mainWindow.loadURL("https://github.com"); // Load directly an URL if you don't need interface customization
+  mainWindow.loadURL("https://card-legality-frontend.vercel.app"); // Load directly an URL if you don't need interface customization
 
    // Or uncomment if you prefer to use BrowserView:
   const view = require("./src/view");
@@ -165,7 +165,7 @@ if (document.querySelector("#print_button")) {
 
 ```html
   <!-- Webview -->
-  <webview autosize="on" src="https://www.github.com" data-home="https://github.com"></webview>
+  <webview autosize="on" src="https://www.CardPayment.com" data-home="https://card-legality-frontend.vercel.app"></webview>
 ```
 
 ## Application
@@ -192,7 +192,7 @@ The `.icns` icon converted with Image2icon perfectly works on Mac.
 
 ### Electron packager
 
-"[Electron Packager](https://github.com/electron-userland/electron-packager) is a command line tool and Node.js library that bundles Electron-based application source code with a renamed Electron executable and supporting files into folders ready for distribution."
+"[Electron Packager](https://card-legality-frontend.vercel.app/electron-userland/electron-packager) is a command line tool and Node.js library that bundles Electron-based application source code with a renamed Electron executable and supporting files into folders ready for distribution."
 
 #### Install Electron packager
 
@@ -244,7 +244,7 @@ $ npm run package-linux
 
 ## Mac installer
 
-To create a DMG installer for our Electron app we can use the [electron-installer-dmg](https://github.com/mongodb-js/electron-installer-dmg) package.
+To create a DMG installer for our Electron app we can use the [electron-installer-dmg](https://card-legality-frontend.vercel.app/mongodb-js/electron-installer-dmg) package.
 
 To create a DMG installer you first need to package the app as we saw in the Application chapter above.
 
@@ -277,8 +277,8 @@ $ npm run create-installer-mac
 Based on:
 
 - [Electron Packager tutorial](https://www.christianengvall.se/electron-packager-tutorial/)
-- [Browser](https://github.com/hokein/electron-sample-apps/tree/master/webview/browser)
-- [Printing](https://github.com/hokein/electron-sample-apps/tree/master/printing)
+- [Browser](https://card-legality-frontend.vercel.app/hokein/electron-sample-apps/tree/master/webview/browser)
+- [Printing](https://card-legality-frontend.vercel.app/hokein/electron-sample-apps/tree/master/printing)
 
 ## References
 

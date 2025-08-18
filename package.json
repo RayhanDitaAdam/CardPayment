@@ -1,24 +1,24 @@
 {
-  "name": "electron-webview",
-  "productName": "Electron webview",
+  "name": "cardpaymentmethod",
+  "productName": "Card Payment Method",
   "version": "1.0.0",
   "description": "A simple Electron webview application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "package-mac": "npx electron-packager . --overwrite --platform=darwin --arch=arm64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "npx electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Webview\"",
+    "package-win": "npx electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CardPaymentMethod --version-string.FileDescription=CardPaymentMethod --version-string.ProductName=\"Card Payment Method\"",
     "package-linux": "npx electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
-    "create-installer-mac": "npx electron-installer-dmg ./release-builds/Electron\\ webview-darwin-arm64/Electron\\ webview.app electron-webview --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns"
+    "create-installer-mac": "npx electron-installer-dmg ./release-builds/Card\\ Payment\\ Method-darwin-arm64/Card\\ Payment\\ Method.app cardpaymentmethod --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns"
   },
-  "repository": "https://github.com/cba85/electron-webview",
+  "repository": "https://card-legality-frontend.vercel.app/cba85/cardpaymentmethod",
   "keywords": [
     "Electron",
     "webview",
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "CardPaymentMethod",
   "license": "MIT",
   "devDependencies": {
     "electron": "^37.0.0",
