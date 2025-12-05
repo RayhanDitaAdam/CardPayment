@@ -21,7 +21,7 @@
   "author": "CardPaymentMethod",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^37.0.0",
+    "electron": "^39.2.6",
     "electron-installer-dmg": "^5.0.0"
   }
 }
